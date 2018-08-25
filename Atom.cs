@@ -46,13 +46,13 @@ namespace ColoumbForce
 
             Atoms = new List<Atom>();
 
-            PositionApproximation = new Euler(p0, DELTA0);
+            PositionApproximation = new RK4(p0, DELTA0);
             PositionApproximation.f = (x, y) =>
             {
                 return VelocityApproximation.Run(y);
             };
 
-            VelocityApproximation = new Euler(new Vector2(), DELTA0);
+            VelocityApproximation = new RK4(new Vector2(), DELTA0);
             VelocityApproximation.f = (x, y) =>
             {
                 Vector2 a = new Vector2();
